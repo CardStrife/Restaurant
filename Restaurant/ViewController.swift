@@ -16,9 +16,18 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var noteLieu: UISlider!
     
+    @IBOutlet weak var dejaLa: UIButton!
+    @IBOutlet weak var ajouterLieu: UIButton!
+    
+    
+    @IBAction func enregistrement(sender: UIButton) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
