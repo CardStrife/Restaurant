@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var nomLieu: UITextField!
+    @IBOutlet weak var adresseLieu: UITextField!
+    @IBOutlet weak var commentaireLieu: UITextField!
+    
+    @IBOutlet weak var noteLieu: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
