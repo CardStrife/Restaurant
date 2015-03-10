@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Ajout d'un restaurant-->
+        <!--Ajout d'un lieu-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDc-iY-odb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adresse du lieu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDc-iY-odb">
                                 <rect key="frame" x="11" y="199" width="226" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -63,21 +63,34 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fvs-5M-ht9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom du lieu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fvs-5M-ht9">
                                 <rect key="frame" x="11" y="132" width="293" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCn-mr-4fV">
+                                <rect key="frame" x="11" y="371" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdH-0o-fdE">
+                                <rect key="frame" x="-3" y="400" width="320" height="162"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vCn-mr-4fV" firstAttribute="top" secondItem="Knj-i6-VIO" secondAttribute="bottom" constant="8" id="03e-FN-7e4"/>
                             <constraint firstItem="XRC-jk-qjY" firstAttribute="top" secondItem="hDc-iY-odb" secondAttribute="bottom" constant="8" id="0EZ-QY-Mv9"/>
                             <constraint firstItem="qSM-3Z-ajQ" firstAttribute="trailing" secondItem="415-bo-vLJ" secondAttribute="trailing" id="1FN-FB-Q7d"/>
                             <constraint firstItem="hDc-iY-odb" firstAttribute="top" secondItem="9CG-PE-p1u" secondAttribute="bottom" constant="8" id="28R-Ze-Teu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CdH-0o-fdE" secondAttribute="trailing" constant="-13" id="3C3-nB-ZMI"/>
                             <constraint firstItem="415-bo-vLJ" firstAttribute="top" secondItem="XRC-jk-qjY" secondAttribute="bottom" constant="8" id="4cp-Wh-8Yb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RW5-zo-Fhc" secondAttribute="trailing" constant="189" id="5x0-LV-y40"/>
+                            <constraint firstItem="CdH-0o-fdE" firstAttribute="top" secondItem="vCn-mr-4fV" secondAttribute="bottom" constant="8" id="9B1-05-INg"/>
                             <constraint firstItem="RW5-zo-Fhc" firstAttribute="top" secondItem="415-bo-vLJ" secondAttribute="bottom" constant="8" id="B3O-KK-A0S"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Knj-i6-VIO" secondAttribute="bottom" constant="205" id="DZB-cL-Hou"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="CdH-0o-fdE" secondAttribute="bottom" constant="6" id="EE0-2S-vcY"/>
                             <constraint firstItem="fvs-5M-ht9" firstAttribute="top" secondItem="Iva-DS-LEL" secondAttribute="bottom" constant="8" id="FJP-OB-BsI"/>
                             <constraint firstItem="Knj-i6-VIO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-5" id="Flo-IO-io1"/>
                             <constraint firstItem="qSM-3Z-ajQ" firstAttribute="top" secondItem="hDc-iY-odb" secondAttribute="top" id="IyU-Xt-C7y"/>
@@ -91,7 +104,10 @@
                             <constraint firstItem="RW5-zo-Fhc" firstAttribute="top" secondItem="415-bo-vLJ" secondAttribute="bottom" constant="8" id="Ugc-Qk-4KB"/>
                             <constraint firstItem="Knj-i6-VIO" firstAttribute="top" secondItem="RW5-zo-Fhc" secondAttribute="bottom" constant="8" id="V2q-Mc-mJ0"/>
                             <constraint firstItem="9CG-PE-p1u" firstAttribute="top" secondItem="fvs-5M-ht9" secondAttribute="bottom" constant="8" id="bDA-h3-Pf2"/>
+                            <constraint firstItem="CdH-0o-fdE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-19" id="cEG-AH-n2q"/>
+                            <constraint firstItem="CdH-0o-fdE" firstAttribute="top" secondItem="vCn-mr-4fV" secondAttribute="bottom" constant="8" id="ciP-M7-fjO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9CG-PE-p1u" secondAttribute="trailing" constant="230" id="csh-Gm-kYm"/>
+                            <constraint firstItem="vCn-mr-4fV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-5" id="d7U-hn-1BN"/>
                             <constraint firstItem="qSM-3Z-ajQ" firstAttribute="trailing" secondItem="fvs-5M-ht9" secondAttribute="trailing" id="fYR-zb-K6T"/>
                             <constraint firstItem="Knj-i6-VIO" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="gJc-YC-PoE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XRC-jk-qjY" secondAttribute="trailing" constant="256" id="gJv-mL-lwK"/>
@@ -101,6 +117,7 @@
                             <constraint firstItem="hDc-iY-odb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-5" id="iwQ-eh-AhL"/>
                             <constraint firstItem="415-bo-vLJ" firstAttribute="top" secondItem="qSM-3Z-ajQ" secondAttribute="bottom" constant="37" id="lIf-ea-pF3"/>
                             <constraint firstItem="Iva-DS-LEL" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="39" id="lXl-k7-MQV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vCn-mr-4fV" secondAttribute="trailing" constant="257" id="rch-G1-yhn"/>
                             <constraint firstItem="9CG-PE-p1u" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-5" id="tuD-uL-vOa"/>
                             <constraint firstItem="Iva-DS-LEL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-5" id="uzp-4M-l1b"/>
                             <constraint firstItem="qSM-3Z-ajQ" firstAttribute="leading" secondItem="hDc-iY-odb" secondAttribute="trailing" constant="8" symbolic="YES" id="wxe-vt-u5r"/>
@@ -110,7 +127,7 @@
                             <constraint firstItem="415-bo-vLJ" firstAttribute="top" secondItem="XRC-jk-qjY" secondAttribute="bottom" constant="8" id="zmh-hY-9sw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Ajout d'un restaurant" id="Y9k-bS-exf">
+                    <navigationItem key="navigationItem" title="Ajout d'un lieu" id="Y9k-bS-exf">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="0QA-6s-ifk"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="KWf-jz-wPZ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Ye-GD-cKj">
@@ -133,6 +150,7 @@
                         <outlet property="dejaLa" destination="qSM-3Z-ajQ" id="Vph-ad-Ojp"/>
                         <outlet property="nomLieu" destination="fvs-5M-ht9" id="nbZ-gO-t1W"/>
                         <outlet property="noteLieu" destination="415-bo-vLJ" id="8Vi-fJ-lPW"/>
+                        <outlet property="typeLieu" destination="CdH-0o-fdE" id="88G-xX-fHr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -162,13 +180,13 @@
         <!--Root View Controller-->
         <scene sceneID="LJ9-EC-ujz">
             <objects>
-                <tableViewController id="ivH-hH-gkl" sceneMemberID="viewController">
+                <tableViewController id="ivH-hH-gkl" customClass="ListTableViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tBT-fc-ve7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wJn-Pe-QSQ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="wJn-Pe-QSQ">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wJn-Pe-QSQ" id="2Ip-Hv-biZ">
                                     <autoresizingMask key="autoresizingMask"/>

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+@objc(Lieu)
 class Lieu : NSManagedObject {
     @NSManaged var nom : String
     @NSManaged var adresse : String
