@@ -39,7 +39,7 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
         //Affectation des variables 
         newLieu.nom=nomLieu.text
         newLieu.adresse=adresseLieu.text
-        newLieu.note=noteLieu.value
+        newLieu.note=Float(noteLieu.value)
         newLieu.type=type
         newLieu.commentaire=commentaireLieu.text
         
