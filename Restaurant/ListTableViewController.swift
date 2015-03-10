@@ -11,7 +11,7 @@ import CoreData
 
 class ListTableViewController: UITableViewController {
 
-    var listeLieu = [NSManagedObject]()
+    var listeLieu : Array<AnyObject>=[]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,16 @@ class ListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        let appDel = UIApplication.sharedApplication().delegate as AppDelegate
+        let context : NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "Lieu")
+        
+        listeLieu = context.executeFetchRequest(freq, error: nil)!
+        tableView.reloadData()
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,7 +56,7 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        let lieu = listeLieu[indexPath.row]
+        let lieu: AnyObject = listeLieu[indexPath.row]
         cell.textLabel?.text=lieu.valueForKey("nom") as String?
         return cell
     }

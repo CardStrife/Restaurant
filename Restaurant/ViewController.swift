@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
 
     @IBOutlet weak var nomLieu: UITextField!
@@ -34,18 +35,20 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
         let en = NSEntityDescription.entityForName("Lieu", inManagedObjectContext: context)
         
         //Création d'une instance
+        //var newLieu = Lieu(entity:en!,insertIntoManagedObjectContext:context)
         var newLieu = Lieu(entity:en!,insertIntoManagedObjectContext:context)
         
         //Affectation des variables 
         newLieu.nom=nomLieu.text
         newLieu.adresse=adresseLieu.text
-        newLieu.note=Float(noteLieu.value)
+        //newLieu.note=0
         newLieu.type=type
         newLieu.commentaire=commentaireLieu.text
         
         //Sauvegarde du contexte
         context.save(nil)
         
+        println(newLieu)
         //Retour à la page de la liste
         self.navigationController?.popToRootViewControllerAnimated(true)
         
@@ -80,7 +83,7 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        type = listeTypeLieu[row]
+        type = listeTypeLieu[row+1]
     }
 
 }
