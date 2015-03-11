@@ -15,6 +15,7 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     @IBOutlet weak var nomLieu: UITextField!
     @IBOutlet weak var adresseLieu: UITextField!
     @IBOutlet weak var commentaireLieu: UITextField!
+    @IBOutlet weak var nomType: UILabel!
     
     @IBOutlet weak var typeLieu: UIPickerView!
     @IBOutlet weak var noteLieu: UISlider!
@@ -23,7 +24,7 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     @IBOutlet weak var ajouterLieu: UIButton!
     
     let listeTypeLieu = ["Restaurant","Musée","Cinéma","théatre","Observatoire"]
-    var type = ""
+    var type : String = ""
     
     @IBAction func enregistrement(sender: UIButton) {
         
@@ -41,7 +42,9 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
         //Affectation des variables 
         newLieu.nom=nomLieu.text
         newLieu.adresse=adresseLieu.text
-        //newLieu.note=0
+        println(noteLieu.value)
+        //newLieu.note=noteLieu.value
+        //println(type)
         newLieu.type=type
         newLieu.commentaire=commentaireLieu.text
         
@@ -83,7 +86,7 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        type = listeTypeLieu[row+1]
+        type = listeTypeLieu[row]
     }
 
 }

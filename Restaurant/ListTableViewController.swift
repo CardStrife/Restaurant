@@ -13,6 +13,7 @@ class ListTableViewController: UITableViewController {
 
     var listeLieu : Array<AnyObject>=[]
     
+   // @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,31 +57,48 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        let lieu: AnyObject = listeLieu[indexPath.row]
+        let lieu: NSManagedObject = listeLieu[indexPath.row] as NSManagedObject
+        
+        
         cell.textLabel?.text=lieu.valueForKey("nom") as String?
+        
+        var adresse = lieu.valueForKey("adresse") as String?
+        var type = lieu.valueForKey("type") as String?
+        
+        cell.detailTextLabel?.text = "\(adresse) - Type : \(type)"
         return cell
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        let appDel : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
+        //Référence à notre contexte
+        let context : NSManagedObjectContext = appDel.managedObjectContext!
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete{
+                context.deleteObject(listeLieu[indexPath.row] as NSManagedObject)
+                listeLieu.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        }
+        
+        var error: NSError? = nil
+        if !context.save(&error){
+           abort()
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -97,14 +115,25 @@ class ListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier? == "lieuDetail"{
+            let row = self.tableView.indexPathsForSelectedRows()!.row
+            var selectLieu : NSManagedObject = listeLieu[row!] as NSManagedObject
+            let vc : DetailsViewController = segue.destinationViewController as DetailsViewController
+            vc.nom = selectLieu.valueForKey("nom") as String
+            vc.adresse = selectLieu.valueForKey("adresse") as String
+            vc.note = selectLieu.valueForKey("note") as Float
+            vc.type = selectLieu.valueForKey("type") as String
+            vc.commentaire = selectLieu.valueForKey("commentaire") as String
+            vc.existLieu=selectLieu
+        }
     }
-    */
+    
 
 }
