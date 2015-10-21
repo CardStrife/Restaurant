@@ -15,6 +15,7 @@
 		413840FE1AADECAF00C324A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 413840FD1AADECAF00C324A4 /* Images.xcassets */; };
 		413841011AADECAF00C324A4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 413840FF1AADECAF00C324A4 /* LaunchScreen.xib */; };
 		4138410D1AADECAF00C324A4 /* RestaurantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138410C1AADECAF00C324A4 /* RestaurantTests.swift */; };
+		413FDAA61AB0E0DB00598977 /* LieuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413FDAA51AB0E0DB00598977 /* LieuManager.swift */; };
 		418B89EF1AAE75D500311B4B /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418B89EE1AAE75D500311B4B /* Restaurant.swift */; };
 		41AE5CDF1AAE6190009627A0 /* Lieu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE5CDE1AAE6190009627A0 /* Lieu.swift */; };
 		41AE5CE11AAE62D6009627A0 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE5CE01AAE62D6009627A0 /* ListTableViewController.swift */; };
@@ -43,6 +44,7 @@
 		413841061AADECAF00C324A4 /* RestaurantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4138410B1AADECAF00C324A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4138410C1AADECAF00C324A4 /* RestaurantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTests.swift; sourceTree = "<group>"; };
+		413FDAA51AB0E0DB00598977 /* LieuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LieuManager.swift; sourceTree = "<group>"; };
 		418B89EE1AAE75D500311B4B /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		41AE5CDE1AAE6190009627A0 /* Lieu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lieu.swift; sourceTree = "<group>"; };
 		41AE5CE01AAE62D6009627A0 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				413840F11AADECAF00C324A4 /* Supporting Files */,
 				41AE5CE01AAE62D6009627A0 /* ListTableViewController.swift */,
 				4131B0F01AAFAC9D00206A3D /* DetailsViewController.swift */,
+				413FDAA51AB0E0DB00598977 /* LieuManager.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -179,6 +182,8 @@
 		413840E61AADECAF00C324A4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Thierry Tran";
 				TargetAttributes = {
@@ -241,6 +246,7 @@
 				413840F41AADECAF00C324A4 /* AppDelegate.swift in Sources */,
 				4131B0F11AAFAC9D00206A3D /* DetailsViewController.swift in Sources */,
 				41AE5CE11AAE62D6009627A0 /* ListTableViewController.swift in Sources */,
+				413FDAA61AB0E0DB00598977 /* LieuManager.swift in Sources */,
 				41AE5CDF1AAE6190009627A0 /* Lieu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

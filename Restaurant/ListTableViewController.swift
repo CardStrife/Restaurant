@@ -25,11 +25,11 @@ class ListTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        let appDel = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "Lieu")
         
-        listeLieu = context.executeFetchRequest(freq, error: nil)!
+        listeLieu = try! context.executeFetchRequest(freq)
         tableView.reloadData()
         
     }
@@ -57,13 +57,13 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        let lieu: NSManagedObject = listeLieu[indexPath.row] as NSManagedObject
+        let lieu: NSManagedObject = listeLieu[indexPath.row] as! NSManagedObject
         
         
-        cell.textLabel?.text=lieu.valueForKey("nom") as String?
+        cell.textLabel?.text=lieu.valueForKey("nom") as! String?
         
-        var adresse = lieu.valueForKey("adresse") as String?
-        var type = lieu.valueForKey("type") as String?
+        let adresse = lieu.valueForKey("adresse") as! String?
+        let type = lieu.valueForKey("type") as! String?
         
         cell.detailTextLabel?.text = "\(adresse) - Type : \(type)"
         return cell
@@ -81,20 +81,23 @@ class ListTableViewController: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let appDel : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         //Référence à notre contexte
         let context : NSManagedObjectContext = appDel.managedObjectContext!
         
         if editingStyle == UITableViewCellEditingStyle.Delete{
-                context.deleteObject(listeLieu[indexPath.row] as NSManagedObject)
+                context.deleteObject(listeLieu[indexPath.row] as! NSManagedObject)
                 listeLieu.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             
         }
         
         var error: NSError? = nil
-        if !context.save(&error){
+        do {
+            try context.save()
+        } catch var error1 as NSError {
+            error = error1
            abort()
         }
     }
@@ -122,8 +125,8 @@ class ListTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if segue.identifier? == "lieuDetail"{
-            let row = self.tableView.indexPathsForSelectedRows()!.row
+        if segue.identifier == "lieuDetail"{
+            /*let row = self.tableView.indexPathsForSelectedRows()!.row
             var selectLieu : NSManagedObject = listeLieu[row!] as NSManagedObject
             let vc : DetailsViewController = segue.destinationViewController as DetailsViewController
             vc.nom = selectLieu.valueForKey("nom") as String
@@ -131,7 +134,7 @@ class ListTableViewController: UITableViewController {
             vc.note = selectLieu.valueForKey("note") as Float
             vc.type = selectLieu.valueForKey("type") as String
             vc.commentaire = selectLieu.valueForKey("commentaire") as String
-            vc.existLieu=selectLieu
+            vc.existLieu=selectLieu*/
         }
     }
     

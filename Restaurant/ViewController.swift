@@ -29,7 +29,7 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     @IBAction func enregistrement(sender: UIButton) {
         
         //Référence à note app delegate
-        let appDel : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         //Référence à notre contexte
         let context : NSManagedObjectContext = appDel.managedObjectContext!
@@ -37,21 +37,24 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
         
         //Création d'une instance
         //var newLieu = Lieu(entity:en!,insertIntoManagedObjectContext:context)
-        var newLieu = Lieu(entity:en!,insertIntoManagedObjectContext:context)
+        let newLieu = Lieu(entity:en!,insertIntoManagedObjectContext:context)
         
         //Affectation des variables 
-        newLieu.nom=nomLieu.text
-        newLieu.adresse=adresseLieu.text
-        println(noteLieu.value)
+        newLieu.nom=nomLieu.text!
+        newLieu.adresse=adresseLieu.text!
+        print(noteLieu.value)
         //newLieu.note=noteLieu.value
         //println(type)
         newLieu.type=type
-        newLieu.commentaire=commentaireLieu.text
+        newLieu.commentaire=commentaireLieu.text!
         
-        //Sauvegarde du contexte
-        context.save(nil)
+        do {
+            //Sauvegarde du contexte
+            try context.save()
+        } catch _ {
+        }
         
-        println(newLieu)
+        print(newLieu)
         //Retour à la page de la liste
         self.navigationController?.popToRootViewControllerAnimated(true)
         
